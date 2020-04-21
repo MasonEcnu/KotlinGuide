@@ -8,7 +8,7 @@ import kotlin.system.exitProcess
  */
 
 private const val FILE_NAME = "dependencies.txt"
-private const val COMPILE_PATTERN = "compile(\"%s:%s:%s\")\n"
+private const val COMPILE_PATTERN = "implementation(\"%s:%s:%s\")\n"
 private val EXCLUDE_PARAMS = setOf("name", "version")
 
 fun main() {

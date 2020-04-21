@@ -19,6 +19,7 @@ repositories {
 dependencies {
     implementation("org.codehaus.groovy:groovy-all:2.3.11")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.5")
+    implementation("com.alibaba:fastjson:1.2.68")
     implementation(kotlin("stdlib-jdk8"))
     testImplementation("junit", "junit", "4.12")
 }
