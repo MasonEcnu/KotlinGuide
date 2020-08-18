@@ -15,7 +15,7 @@ class BioThreadServer(private val port: Int) {
         try {
             while (true) {
                 val clientSocket = serverSocket.accept()
-                Thread(RunnableServer(clientSocket)).start()
+                Thread(BioRunnableServer(clientSocket)).start()
             }
         } catch (e: Exception) {
             e.printStackTrace()

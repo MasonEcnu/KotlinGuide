@@ -7,3 +7,5 @@ package com.mason.net
 const val LOCAL_HOST = "localhost"
 
 const val LOCAL_PORT = 13131
+
+val DEFAULT_CHARSET = Charsets.UTF_8

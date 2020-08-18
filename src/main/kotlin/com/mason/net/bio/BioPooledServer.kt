@@ -18,7 +18,7 @@ class BioPooledServer(private val port: Int) {
         try {
             while (true) {
                 val clientSocket = serverSocket.accept()
-                pool.submit(Thread(RunnableServer(clientSocket)))
+                pool.submit(Thread(BioRunnableServer(clientSocket)))
             }
         } catch (e: Exception) {
             e.printStackTrace()

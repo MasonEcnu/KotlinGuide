@@ -5,7 +5,7 @@ import java.net.Socket
 /**
  * Created by mwu on 2020/8/17
  */
-class RunnableServer(private val clientSocket: Socket) : Runnable {
+class BioRunnableServer(private val clientSocket: Socket) : Runnable {
 
     override fun run() {
         println("Accept connect from:${clientSocket.remoteSocketAddress}")
