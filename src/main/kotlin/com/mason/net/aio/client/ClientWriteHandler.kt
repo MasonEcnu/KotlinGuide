@@ -9,11 +9,11 @@ import java.util.concurrent.CountDownLatch
 /**
  * Created by mwu on 2020/8/18
  */
-class ServerWriteHandler(private val clientChannel: AsynchronousSocketChannel, private val latch: CountDownLatch) :
+class ClientWriteHandler(private val clientChannel: AsynchronousSocketChannel, private val latch: CountDownLatch) :
     CompletionHandler<Int, ByteBuffer> {
 
     override fun completed(result: Int, buffer: ByteBuffer) {
-        println("ServerWriteHandler running at thread:${Thread.currentThread().name}")
+        println("ClientWriteHandler running at thread:${Thread.currentThread().name}")
         //完成全部数据的写入
         if (buffer.hasRemaining()) {
             clientChannel.write(buffer, buffer, this)

@@ -105,9 +105,9 @@ class NioClient(private val host: String, private val port: Int) {
                     // 根据缓冲区可读字节数创建字节数组
                     val bytes = ByteArray(buffer.remaining())
                     // 将缓冲区可读字节数组复制到新建的数组中
-                    buffer[bytes]
+                    buffer.get(bytes)
                     val result = String(bytes, DEFAULT_CHARSET)
-                    println("客户端收到消息：$result")
+                    println("Receive msg from:${socketChannel.remoteAddress} msg:$result")
                 } else if (readBytes < 0) {
                     key.cancel()
                     sc.close()
@@ -128,7 +128,7 @@ class NioClient(private val host: String, private val port: Int) {
 
     @Throws(Exception::class)
     fun sendMsg(msg: String) {
-//        socketChannel.register(selector, SelectionKey.OP_READ)
+        socketChannel.register(selector, SelectionKey.OP_READ)
         doWrite(msg)
     }
 
@@ -137,7 +137,7 @@ class NioClient(private val host: String, private val port: Int) {
         //  将消息编码为字节数组
         val bytes = request.toByteArray()
         //  根据数组容量创建ByteBuffer
-        val writeBuffer: ByteBuffer = ByteBuffer.allocate(bytes.size)
+        val writeBuffer = ByteBuffer.allocate(bytes.size)
         //  将字节数组复制到缓冲区
         writeBuffer.put(bytes)
         //  flip操作

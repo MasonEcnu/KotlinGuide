@@ -65,6 +65,6 @@ class AsyncClientHandler(private val host: String, private val port: Int) :
         writeBuffer.put(req)
         writeBuffer.flip()
         //异步写
-        clientChannel.write(writeBuffer, writeBuffer, ServerWriteHandler(clientChannel, latch))
+        clientChannel.write(writeBuffer, writeBuffer, ClientWriteHandler(clientChannel, latch))
     }
 }

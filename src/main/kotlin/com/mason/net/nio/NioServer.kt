@@ -47,7 +47,7 @@ class NioServer(private val port: Int) {
     private fun startNow() {
         while (started.get()) {
             try {
-                if (selector.select() > 0) {
+                if (selector.selectNow() > 0) {
                     val keys = selector.selectedKeys()
                     val keyIterator = keys.iterator()
                     if (keyIterator.hasNext()) {
@@ -60,6 +60,8 @@ class NioServer(private val port: Int) {
                             key?.channel()?.close()
                         }
                     }
+                } else {
+                    println("tick...")
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
